@@ -15,13 +15,13 @@ export async function POST() {
     const {
       data: { user }
     } = await supabase.auth.getUser();
-
+    //@ts-ignore
     if (!user) throw Error('Could not get user');
     const customer = await createOrRetrieveCustomer({
       uuid: user.id || '',
       email: user.email || ''
     });
-
+    //@ts-ignore
     if (!customer) throw Error('Could not get customer');
     const { url } = await stripe.billingPortal.sessions.create({
       customer,
