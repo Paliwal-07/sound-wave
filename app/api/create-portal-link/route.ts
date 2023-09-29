@@ -28,7 +28,7 @@ export async function POST() {
       return_url: `${getURL()}/account`
     });
     //@ts-ignore
-    return NextResponse.json({ url });
+    return new Response({ url });
   } catch (err: any) {
     console.log(err);
     new NextResponse('Internal Error', { status: 500 })
